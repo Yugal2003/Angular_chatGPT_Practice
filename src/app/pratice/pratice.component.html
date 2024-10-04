@@ -1,0 +1,236 @@
+<!-- two way data binding -->
+ <!-- Q.1 Create a form where a user can input their name, and it gets displayed in real-time below the form using two-way data binding. -->
+
+
+<!-- <div>
+    <form>
+        <h1>User Form</h1>
+        <label>Name: </label>
+        <input autocomplete="off" name="username" [(ngModel)]="name" class="borders" type="text" placeholder="Enter Your Name...">
+        <button type="button" class="borders" (click)="onSubmit()">Submit</button>
+    </form>
+    <ul>
+        <li *ngFor="let item of userData">{{item}}</li>
+    </ul>
+</div> -->
+
+
+<!-- Q.1 end -->
+
+
+
+
+ <!-- Q.2 Create a toggle button that shows or hides a paragraph of text using ng-show or ng-hide. -->
+
+
+ <!-- <div class="flex flex-col items-center justify-center min-h-52 gap-8">
+    <button class="borders" (click)="isVisible()">{{showText ? "Hide" : "Show"}}</button>
+    <h1 class="text-xl" *ngIf="showText">Hello World</h1>
+ </div> -->
+
+
+ <!-- Q.2 end -->
+
+
+  <!-- Q.3 Use ng-class to change the background color of a div based on the user’s input. For example, the div should turn green if the user enters a positive number and red if they enter a negative number. -->
+
+
+ <!-- <div class="flex flex-col items-center justify-center min-h-52 gap-8">
+    <div class="min-w-72 h-48 rounded-xl" [style.backgroundColor]="currentColor">
+        
+    </div>
+    
+    <input [(ngModel)]="userInput" class="borders" type="number" name="userNumber">
+
+    <button class="borders" type="submit" (click)="changeColor()">Submit</button>
+ </div> -->
+
+
+ <!-- Q.3 end -->
+
+
+
+ <!-- Q.4 Build a simple calculator using AngularJS where users can input two numbers and choose an operation (add, subtract, multiply, divide) from a dropdown. Display the result below the form. -->
+
+<!-- with  button to add,sub,mul,div start -->
+ 
+ <!-- <div class="flex flex-col items-center justify-center min-h-52 gap-8">
+    <h1 class="h1">Basic Calculator</h1>
+    <div>
+        <label for="">Value1 :</label>
+        <input [(ngModel)]="input1" class="borders" type="number" name="number1" placeholder="Enter Number...">
+        <label for="">Value2 :</label>
+        <input [(ngModel)]="input2" class="borders" type="number" name="number2" placeholder="Enter Number...">
+    </div>
+
+    <div class="flex flex-row gap-4">
+        <button (click)="submitAnswer('add')"  class="borders" value="add">Add</button>
+        <button (click)="submitAnswer('sub')"  class="borders" value="sub">Subtract</button>
+        <button  (click)="submitAnswer('mul')" class="borders" value="mul">Multiply</button>
+        <button (click)="submitAnswer('div')" class="borders" value="div">Divide</button>
+    </div>
+    Answer : {{answer}}
+ </div> -->
+
+<!-- with  button to add,sub,mul,div end -->
+
+
+<!-- with  select & option to add,sub,mul,div start -->
+ 
+
+
+ <!-- <div class="flex flex-col items-center justify-center min-h-52 gap-8">
+    <h1 class="h1">Basic Calculator</h1>
+    <div>
+        <label for="">Value1 :</label>
+        <input [(ngModel)]="input1" class="borders" type="number" name="number1" placeholder="Enter Number...">
+        <label for="">Value2 :</label>
+        <input [(ngModel)]="input2" class="borders" type="number" name="number2" placeholder="Enter Number...">
+    </div>
+
+    Answer : {{answer}}
+
+    <div>
+        <select class="p-1.5 rounded-md" [(ngModel)]="selectedOperation" (change)="submitAnswer(selectedOperation)">
+            <option>Select An Option</option>
+            <option value="add">Add</option>
+            <option value="sub">Subtract</option>
+            <option value="mul">Multiply</option>
+            <option value="div">Divide</option>
+        </select>
+    </div>
+    
+ </div> -->
+
+
+
+<!-- with  select & option to add,sub,mul,div end -->
+
+
+ <!-- Q.4 end -->
+
+
+ <!-- // Q.5 Create a search bar where a user can filter through a list of names (e.g., a list of employees) using the filter feature in AngularJS. -->
+
+<!-- <div class="flex flex-col items-center justify-center min-h-52">
+    <h1 class="h1">Search Employee</h1>
+    <div class="flex flex-row items-center justify-center min-h-24">
+        <label for="">Search Name :</label>
+        <input autocomplete="off" [(ngModel)]="userInput" class="borders" type="text" name="username" placeholder="Search an Name...">
+        <button type="submit" class="borders" (click)="findName()">Check</button>
+    </div>
+    
+    <ul>
+        <li *ngFor="let item of presentuser">{{item}}</li>
+    </ul>
+</div> -->
+
+<!-- // Q.5 end -->
+
+
+
+
+
+
+ <!-- // Q.6 Build a form that takes a user's name, email, and phone number. Implement basic form validation to ensure the name is required, the email follows the correct pattern, and the phone number has exactly 10 digits. -->
+
+<!-- <div class="flex flex-col items-center justify-center min-h-52">
+    <h1 class="h1">User Form </h1>
+    <div>
+        <form [formGroup]="studentForm" class="flex flex-col gap-4 items-center justify-center">
+            <div>
+                <label for="">Name :</label>
+                <input formControlName="FirstName" class="borders" type="text" name="name">
+            </div>
+                @if(studentForm.controls['FirstName'].touched && studentForm.controls['FirstName'].errors?.['required']){
+                    <span class="red">*Field Are Required !</span>
+                }
+                @else if(studentForm.controls['FirstName'].touched && studentForm.controls['FirstName'].errors?.['minlength']){
+                    <span class="red">*Min 3 Character Are Required !</span>
+                }
+            <div>
+                <label for="">Email :</label>
+                <input formControlName="Email" class="borders" type="email" name="email" min>
+            </div>
+                @if(studentForm.controls['Email'].touched && studentForm.controls['Email'].errors?.['required']){
+                    <span class="red">*Field Are Required !</span>
+                }
+                @else if(studentForm.controls['Email'].touched && studentForm.controls['Email'].errors?.['email']){
+                    <span class="red">*Email is Not Valid !</span>
+                }
+            <div>
+                <label for="">Phone :</label>
+                <input formControlName="Phone" class="borders" type="number" name="phone">
+            </div>
+                @if(studentForm.controls['Phone'].touched && studentForm.controls['Phone'].errors?.['required']){
+                    <span class="red">*Field Are Required !</span>
+                }
+                @else if(studentForm.controls['Phone'].touched && studentForm.controls['Phone'].errors?.['minlength']){
+                    <span class="red">*Min 10 Number Are Required !</span>
+                }
+                @else if(studentForm.controls['Phone'].touched && studentForm.controls['Phone'].errors?.['maxlength']){
+                    <span class="red">*Min 10 Number Are Required !</span>
+                }
+            <button (click)="onSubmit()" class="borders w-24" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div>
+        <ul *ngFor="let item of formValues;let i = index">
+            <li>Data {{i + 1}}</li>
+            <li>Name :{{item.FirstName}}</li>
+            <li>Email :{{item.Email}}</li>
+            <li>Phone :{{item.Phone}}</li>
+        </ul>
+    </div>
+</div> -->
+
+<!-- // Q.6 end -->
+
+
+
+
+
+
+ <!-- // Q.7 Use AngularJS’s $http service to fetch data from a public API (e.g., a list of users) and display it in a table on the webpage. -->
+
+<!-- <div class="flex flex-col justify-center items-center min-h-52">
+    <div *ngIf="userData.length > 0">
+        <ul *ngFor="let item of userData">
+            <li>{{item.id}}</li>
+            <li>{{item.title}}</li>
+            <li>{{item.description.substring(0,30)}}</li>
+            <li><img [src]="item.image" alt="img" width="30px"></li>
+        </ul>
+    </div>
+</div> -->
+
+
+
+<!-- // Q.7 end -->
+
+
+
+
+
+ <!-- // Q.8 Set up routing in AngularJS using ngRoute. Create three simple pages (e.g., Home, About, Contact) and navigate between them using Angular routing. -->
+
+ <!-- <div class="flex flex-row justify-between items-center mx-auto max-w-6xl">
+    <div>
+        <a routerLink="">Home</a>
+    </div>
+    <div>
+        <ul class="flex flex-row gap-8">
+            <a routerLink="">Home</a>
+            <a routerLink="Contact">Contact</a>
+            <a routerLink="About">About</a>
+        </ul>
+    </div>
+ </div>
+
+ <div>
+    <router-outlet></router-outlet>
+</div> -->
+
+
+<!-- // Q.8 end -->
